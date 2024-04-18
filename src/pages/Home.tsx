@@ -1,7 +1,17 @@
 import { Fragment } from "react/jsx-runtime";
-import { Formulario } from "../compnents/style/Formulario";
 import { useState } from "react";
-import { v4 as generateUUID } from "uuid";
+// import { v4 as generateUUID } from "uuid";
+import { Container } from "../compnents/style/Container";
+import { Title } from "../compnents/style/Title";
+import { Divider } from "../compnents/style/Divider";
+import { Table } from "../compnents/style/Table";
+import { ActionButton } from "../compnents/style/ActionButton";
+import { FloatButton } from "../compnents/style/FloatButton";
+
+export interface ModalState {
+  mode?: "create" | "update" | "delete";
+  isOpen: boolean;
+}
 
 interface Livraria {
   id: string;
@@ -15,89 +25,44 @@ interface Livraria {
 
 export function Livrarias() {
   const [cadastros, setCadastros] = useState<Livraria[]>([]);
-
-  function cadastrarLivro(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-
-    const novoCadastro: Livraria = {
-      id: generateUUID(),
-      titulo: event.currentTarget["titulo"].value,
-      autor: event.currentTarget["autor"].value,
-      anoPublicacao: event.currentTarget["anoPublicacao"].value,
-      dataCadastro: event.currentTarget["dataCadastro"].value,
-      genero: event.currentTarget["genero"].value,
-      descricao: event.currentTarget["descricao"].value,
-    };
-
-    setCadastros((currentValue) => [novoCadastro, ...currentValue]);
-
-    event.currentTarget.reset();
-  }
-
-  function removerCadastro(idCadastro: string) {
-    setCadastros((currentValue) =>
-      currentValue.filter((cadastro) => cadastro.id !== idCadastro)
-    );
-  }
-
   return (
     <Fragment>
-      <Formulario>
-        <div>
-          <h1>CADASTRO DE LIVROS</h1>
-          <form onSubmit={cadastrarLivro}>
-            <div>
-              <label>Título:</label>
-              <input type='text' name='titulo' placeholder='Titulo' required />
-            </div>
-            <div>
-              <label>Autor:</label>
-              <input type='text' name='autor' placeholder='Autor' required />
-            </div>
-            <div>
-              <label>Ana da Publicação:</label>
-              <input
-                type='text'
-                name='anoPublicacao'
-                placeholder='Ano da Publicação'
-                required
-              />
-            </div>
-            <div>
-              <label>Data do Cadastro:</label>
-              <input
-                type='text'
-                name='dataCadastro'
-                placeholder='Data do Cadastro'
-                required
-              />
-            </div>
-            <div>
-              <label>Gênero:</label>
-              <input type='text' name='genero' placeholder='Gênero' required />
-            </div>
-            <label>Descrição:</label>
-            <textarea
-              name='descricao'
-              placeholder='Digite uma breve descrição sobre o livro'
-              required
-            ></textarea>
-          </form>
-          <ul>
+      <Container>
+        <Title>Contatos</Title>
+        <Divider />
+
+        <Table>
+          <thead>
+            <tr>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>Publicação</th>
+              <th>Cadastro</th>
+              <th>Gênero</th>
+              <th>Descrição</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
             {cadastros.map((cadastro) => (
-              <li
-                key={cadastro.id}
-                onClick={() => removerCadastro(cadastro.id)}
-              >
-                Título: {cadastro.titulo} - Autor: {cadastro.autor} - Ano
-                Publicação: {cadastro.anoPublicacao} - Data de Cadastro:{" "}
-                {cadastro.dataCadastro} - Gênero: {cadastro.genero} - Descrição:{" "}
-                {cadastro.descricao}
-              </li>
+              <tr key={cadastro.id}>
+                <td>{cadastro.titulo}</td>
+                <td>{cadastro.autor}</td>
+                <td>{cadastro.anoPublicacao}</td>
+                <td>{cadastro.dataCadastro}</td>
+                <td>{cadastro.genero}</td>
+                <td>{cadastro.descricao}</td>
+                <td>
+                  <ActionButton onClick={() => {}}>Excluir</ActionButton>
+                  <ActionButton onClick={() => {}}>Atualizar</ActionButton>
+                </td>
+              </tr>
             ))}
-          </ul>
-        </div>
-      </Formulario>
+          </tbody>
+        </Table>
+      </Container>
+
+      <FloatButton onClick={() => {}}>+</FloatButton>
     </Fragment>
   );
 }
