@@ -13,32 +13,48 @@ interface ModalProps {
   title: string;
   children?: React.ReactNode;
   textButtonConfirm: string;
+  actionConfirm: () => void;
+  isOpen: boolean;
+  actionCLose: () => void;
 }
 
 export function Modal(props: ModalProps) {
   return (
     <Fragment>
-      <ModalStyled>
-        <ModalDialog>
-          <ModalContent>
-            <ModalHeader>
-              <ModalTitle>{props.title}</ModalTitle>
-              <ButtonClose type='button'></ButtonClose>
-            </ModalHeader>
-            <ModalBody>
-              {props.children} ?? <Fragment />
-            </ModalBody>
-            <ModalFooter>
-              <ModalButton type='button' mode='cancel'>
-                Cancelar
-              </ModalButton>
-              <ModalButton type='button' mode='confirm'>
-                {props.textButtonConfirm}
-              </ModalButton>
-            </ModalFooter>
-          </ModalContent>
-        </ModalDialog>
-      </ModalStyled>
+      {props.isOpen && (
+        <ModalStyled>
+          <ModalDialog>
+            <ModalContent>
+              <ModalHeader>
+                <ModalTitle>{props.title}</ModalTitle>
+                <ButtonClose
+                  type='button'
+                  onClick={props.actionCLose}
+                ></ButtonClose>
+              </ModalHeader>
+              <ModalBody>
+                {props.children} ?? <Fragment />
+              </ModalBody>
+              <ModalFooter>
+                <ModalButton
+                  type='button'
+                  mode='cancel'
+                  onClick={props.actionCLose}
+                >
+                  Cancelar
+                </ModalButton>
+                <ModalButton
+                  type='button'
+                  mode='confirm'
+                  onClick={props.actionConfirm}
+                >
+                  {props.textButtonConfirm}
+                </ModalButton>
+              </ModalFooter>
+            </ModalContent>
+          </ModalDialog>
+        </ModalStyled>
+      )}
     </Fragment>
   );
 }

@@ -1,10 +1,10 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { Livrarias } from "../../pages/Home";
+import { Libraries } from "../../pages/Home";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Livrarias />,
+    element: <Libraries />,
   },
 ]);
 
