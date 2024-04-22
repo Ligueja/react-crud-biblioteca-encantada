@@ -8,5 +8,7 @@ export const Table = styled.table`
   td {
     padding: 12px 8px;
     border: 1px solid #fff;
+    font-weight: bold;
+    text-align: center;
   }
 `;

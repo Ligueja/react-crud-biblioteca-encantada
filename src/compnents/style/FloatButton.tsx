@@ -9,10 +9,10 @@ export const FloatButton = styled.button`
   border: 0;
   border-radius: 50%;
   font-size: 1.75rem;
-  background-color: #fa7924;
+  background-color: #c85cdd;
   color: #fff;
   &:hover {
-    background-color: #f16c14;
+    background-color: #c85cdd;
     color: #4e659e;
     cursor: pointer;
   }
