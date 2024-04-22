@@ -1,3 +1,17 @@
+<b>PROGRAMA STARTER FULL STACK WEB - GROWDEV</b>
+
+<b>Módulo: REACT 1</b>
+
+<b>ATIVIDADE PRÁTICA - CRUD A Biblioteca Encantada</b>
+
+Criar um projeto de cadastro (CRUD) de uma biblioteca:
+
+<b>Resultado:</b>
+
+<img src="https://github.com/Ligueja/react-crud-biblioteca-encantada/blob/main/src/assets/tela.jpg" width="600"/>
+
+<b>Tecnologias utilizadas:</b>
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
