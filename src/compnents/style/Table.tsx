@@ -6,9 +6,10 @@ export const Table = styled.table`
   border-collapse: collapse;
   th,
   td {
+    font-size: 1.8rem;
+    font-style: italic;
     padding: 12px 8px;
     border: 1px solid #fff;
-    font-weight: bold;
     text-align: center;
   }
 `;

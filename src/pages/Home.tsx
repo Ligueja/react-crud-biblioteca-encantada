@@ -166,9 +166,8 @@ export function Libraries() {
   return (
     <Fragment>
       <Container>
-        <Title>Contatos</Title>
+        <Title>LIVROS - Biblioteca Mágica</Title>
         <Divider />
-
         <Table>
           <thead>
             <tr>
